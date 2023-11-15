@@ -10,9 +10,8 @@ use App\Models\Listing;
 
 // All Listings
 Route::get('/', function () {
-    return view ('listings', [
+    return view('listings', [
         'heading' => 'Latest Listings',
-        // data is coming from the Model
         'listings' => Listing::all()
     ]);
 });
