@@ -1,6 +1,8 @@
 @extends('layout')
 
 @section('content')
+  @include('partials._hero')
+  @include('partials._search')
   <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 
     @if (count($listings) < 1)
@@ -10,13 +12,13 @@
     @foreach ($listings as $listing)
       <div class="bg-gray-50 border border-gray-200 rounded p-6">
         <div class="flex">
-          <img class="hidden w-48 mr-6 md:block" src="images/no-image.png" alt="" />
+          <img class="hidden w-48 mr-6 md:block" src="{{ asset('images/no-image.png') }}" alt="" />
           <div>
             <h3 class="text-2xl">
-              <!-- NAME -->
-              <a href="show.html">{{ $listing->name }} </a>
+              {{-- NAME --}}
+              <a href="/listings/{{ $listing->id }} ">{{ $listing->name }} </a>
             </h3>
-            <!-- TITLE -->
+            {{-- TITLE --}}
             <div class="text-xl font-bold mb-4">{{ $listing->title }}</div>
             {{-- TAGS --}}
             <ul class="flex">
