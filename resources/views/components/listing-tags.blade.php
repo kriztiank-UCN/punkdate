@@ -1,3 +1,4 @@
+{{-- passes a prop to show.blade.php --}}
 @props(['tagsCsv'])
 
 @php
@@ -5,6 +6,7 @@
 @endphp
 
 <ul class="flex">
+  {{-- Iterate & get the tag, add to query param --}}
   @foreach ($tags as $tag)
     <li class="bg-black text-white rounded-xl px-3 py-1 mr-2">
       <a href="/?tag={{ $tag }}">{{ $tag }}</a>
