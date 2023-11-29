@@ -12,7 +12,8 @@
       @csrf
       <div class="mb-6">
         <label for="name" class="inline-block text-lg mb-2">Name</label>
-        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" />
+        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
+          value="{{ old('name') }}" />
 
         @error('name')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -21,7 +22,8 @@
 
       <div class="mb-6">
         <label for="age" class="inline-block text-lg mb-2">age</label>
-        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="age" />
+        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="age"
+          value="{{ old('age') }}" />
 
         @error('age')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -31,7 +33,7 @@
       <div class="mb-6">
         <label for="location" class="inline-block text-lg mb-2">Location</label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="location"
-          placeholder="Example: Boston MA, etc" />
+          value="{{ old('location') }}" placeholder="Example: Boston MA, etc" />
 
         @error('location')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -40,10 +42,12 @@
 
       <div class="mb-6">
         <label for="email" class="inline-block text-lg mb-2">Email</label>
-        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="email" />
+        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="email"
+          value="{{ old('email') }}" />
 
         @error('email')
-          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+          <p class="text-red-500 text-xs
+          mt-1">{{ $message }}</p>
         @enderror
       </div>
 
@@ -52,7 +56,7 @@
           Tags (Comma Separated)
         </label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"
-          placeholder="Example: female, male, straight, gay, bi" />
+          value="{{ old('tags') }}" placeholder="Example: female, male, straight, gay, bi" />
 
         @error('tags')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
@@ -71,7 +75,9 @@
           Description
         </label>
         <textarea class="border border-gray-200 rounded p-2 w-full" name="description" rows="10"
-          placeholder="Include: age, bio, bla, etc..."></textarea>
+          placeholder="Include: age, bio, bla, etc...">
+      {{ old('description') }}
+        </textarea>
 
         @error('description')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
