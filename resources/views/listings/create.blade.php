@@ -7,26 +7,44 @@
       <p class="mb-4">Create profile to find a punk date</p>
     </header>
 
-    <form action="">
+    <form method="POST" action="/listings">
+      {{-- csrf prevents cross-site scripting attacks, so people can't have a form on their website to submit to your endpoint --}}
+      @csrf
       <div class="mb-6">
         <label for="name" class="inline-block text-lg mb-2">Name</label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" />
+
+        @error('name')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-6">
         <label for="age" class="inline-block text-lg mb-2">age</label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="age" />
+
+        @error('age')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-6">
         <label for="location" class="inline-block text-lg mb-2">Location</label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="location"
           placeholder="Example: Boston MA, etc" />
+
+        @error('location')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-6">
         <label for="email" class="inline-block text-lg mb-2">Email</label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="email" />
+
+        @error('email')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-6">
@@ -35,14 +53,18 @@
         </label>
         <input type="text" class="border border-gray-200 rounded p-2 w-full" name="tags"
           placeholder="Example: female, male, straight, gay, bi" />
+
+        @error('tags')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
 
-      <div class="mb-6">
+      {{-- <div class="mb-6">
         <label for="image" class="inline-block text-lg mb-2">
           Profile Picture
         </label>
         <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" />
-      </div>
+      </div> --}}
 
       <div class="mb-6">
         <label for="description" class="inline-block text-lg mb-2">
@@ -50,6 +72,10 @@
         </label>
         <textarea class="border border-gray-200 rounded p-2 w-full" name="description" rows="10"
           placeholder="Include: age, bio, bla, etc..."></textarea>
+
+        @error('description')
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
+        @enderror
       </div>
 
       <div class="mb-6">

@@ -12,13 +12,13 @@ use App\Http\Controllers\ListingController;
 // create a new route, a new controller method and a new view for each resource
 
 // Common Resource Routes:
-// index - Show all listings
-// show - Show single listing (keep at the bottom of the file)
-// create - Show form to create new listing on create
-// store - Store new listing
+// index - Show all listings (DONE)
+// show - Show single listing (keep at the bottom of the file) (DONE)
+// create - Show form to create new listing on create (DONE)
+// TODO store - Store new listing in database
 // edit - Show form to edit listing 
-// update - Update listing
-// destroy - Delete listing  
+// update - Update listing in database
+// destroy - Delete listing in database
 
 // All Listings
 // Goes to ListingController.php and the index method loads the view
@@ -28,5 +28,12 @@ Route::get('/', [ListingController::class, 'index']);
 // Show Create Form
 Route::get('/listings/create', [ListingController::class, 'create']);
 
-// Single Listing
+// Store Create Data
+// submit form data to this route & call the store method
+Route::post('/listings', [ListingController::class, 'store']);
+
+
+
+
+// Single Listing (keep at the bottom of the file)
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
