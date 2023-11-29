@@ -14,7 +14,7 @@ class ListingController extends Controller
         // dd(request());
         return view('listings.index', [
             // sort, filter & search functionality is in the Listing.php model
-            'listings' => Listing::latest()->filter(Request(['tag', 'search']))->get()
+            'listings' => Listing::latest()->filter(Request(['tag', 'search']))->simplePaginate(4)
         ]);
     }
 

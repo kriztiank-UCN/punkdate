@@ -12,4 +12,10 @@
     @endforeach
 
   </div>
+
+  {{-- PAGINATION --}}
+  {{-- chain on ->paginate(4) or ->simplePaginate(4) in ListingController.php --}}
+  <div class="mt-6 p-4">
+    {{ $listings->links() }}
+  </div>
 </x-layout>
