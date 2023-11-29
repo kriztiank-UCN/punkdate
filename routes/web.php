@@ -10,10 +10,10 @@ use App\Http\Controllers\ListingController;
 // listings, posts, profiles, etc could be the name of the resource
 
 // Common Resource Routes:
-// index - Show all listings - page
-// show - Show single listing - page
-// create - Show form to create new listing on create - page
-// store - Store new listing (post data)
+// index - Show all listings
+// show - Show single listing
+// create - Show form to create new listing on create
+// store - Store new listing
 // edit - Show form to edit listing 
 // update - Update listing
 // destroy - Delete listing  
@@ -25,6 +25,3 @@ Route::get('/', [ListingController::class, 'index']);
 
 // Single Listing
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
-
-
-
