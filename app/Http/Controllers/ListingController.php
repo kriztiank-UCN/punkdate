@@ -9,7 +9,7 @@ class ListingController extends Controller
 {
     // show all listings
     public function index()
-    {   
+    {
         // dd(request());
         return view('listings.index', [
             // sort, filter & search functionality is in the Listing.php model
@@ -23,5 +23,11 @@ class ListingController extends Controller
         return view('listings.show', [
             'listing' => $listing
         ]);
+    }
+
+    // Show Create Form
+    public function create()
+    {
+        return view('listings.create');
     }
 }
