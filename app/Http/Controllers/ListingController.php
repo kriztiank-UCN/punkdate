@@ -33,22 +33,28 @@ class ListingController extends Controller
     }
 
     // Store Create Data
-    public function store(Request $request) {
+    public function store(Request $request)
+    {
         // dd($request->all());
+        // dd($request->file('image'));
+
         $formFields = $request->validate([
             // pass in the name of the table & the field that needs to be unique
             'name' => ['required', Rule::unique('listings', 'name')],
             'age' => 'required',
             'location' => 'required',
-            'email' => ['required', 'email'], // make unique, must be formatted as an email
+            'email' =>  ['required', 'email', Rule::unique('listings', 'email')], // must be formatted as an email
             'tags' => 'required',
             'description' => 'required'
         ]);
         // if any of the form fields fail, laravel sends back an error message to the create view
 
-        // if($request->hasFile('logo')) {
-        //     $formFields['logo'] = $request->file('logo')->store('logos', 'public');
-        // }
+
+        // change 'default' => env('FILESYSTEM_DISK', 'local'), to default' => env('FILESYSTEM_DISK', 'public'), in config/filesystems.php
+        // HOW TO VALIDATE???
+        if ($request->hasFile('image')) {
+            $formFields['image'] = $request->file('image')->store('images', 'public');
+        }
 
         // $formFields['user_id'] = auth()->id();
 
@@ -57,4 +63,51 @@ class ListingController extends Controller
 
         return redirect('/')->with('message', 'Listing created successfully!');
     }
+
+    // Show Edit Form
+    public function edit(Listing $listing)
+    {
+        // dd($listing->name);
+        return view('listings.edit', ['listing' => $listing]);
+    }
+
+     // Edit Update Listing
+     public function update(Request $request, Listing $listing)
+     {
+         $formFields = $request->validate([
+             'name' => 'required',
+             'age' => 'required',
+             'location' => 'required',
+             //FIXME
+             'email' =>  ['required', 'email', Rule::unique('listings', 'email')], // must be formatted as an email
+             'tags' => 'required',
+             'description' => 'required'
+         ]);
+
+         if ($request->hasFile('image')) {
+             $formFields['image'] = $request->file('image')->store('images', 'public');
+         }
+ 
+         // $formFields['user_id'] = auth()->id();
+ 
+         // get the current listing, pass in the form fields
+         $listing->update($formFields);
+ 
+         return back()->with('message', 'Listing updated successfully!');
+     }
+
+      // Delete Listing
+    public function destroy(Listing $listing) {
+        // Make sure logged in user is owner
+        // if($listing->user_id != auth()->id()) {
+        //     abort(403, 'Unauthorized Action');
+        // }
+        
+        // if($listing->logo && Storage::disk('public')->exists($listing->logo)) {
+        //     Storage::disk('public')->delete($listing->logo);
+        // }
+        $listing->delete();
+        return redirect('/')->with('message', 'Listing deleted successfully');
+    }
+ 
 }

@@ -20,7 +20,9 @@ return new class extends Migration
             $table->string('email');
             $table->string('tags');
             $table->longText('description');
-            // $table->string('image')->nullable();
+            // store path to the file in the database
+            // $table->string('image');
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
