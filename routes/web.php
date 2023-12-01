@@ -1,10 +1,11 @@
 <?php
 
 // data is coming from the Model
-use App\Models\Listing;
+// use App\Models\Listing;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\UserController;
 
 // here we load all are views or controllers
 // listings, posts, profiles, etc could be the name of the resource
@@ -19,6 +20,17 @@ use App\Http\Controllers\ListingController;
 // edit - Show form to edit listing
 // update - Update listing in database
 // destroy - Delete listing in database
+
+// Authentication Routes:
+// create - Show form to register new user
+// store - Store new user in database
+
+// WORKFLOW
+// create route
+// create controller file
+// create controller methods/functions
+// create view file
+
 
 // All Listings
 // Goes to ListingController.php and the index method loads the view
@@ -40,6 +52,15 @@ Route::put('/listings/{listing}', [ListingController::class, 'update']);
 
 // Delete Listing
 Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+
+// Show Register/Create Form
+Route::get('/register', [UserController::class, 'create']);
+
+// Create/Store New User
+Route::post('/users', [UserController::class, 'store']);
+
+
+
 
 // Single Listing (keep at the bottom of the file) - {listing} uses route model binding to get the ID
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
