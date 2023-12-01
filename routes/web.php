@@ -59,8 +59,10 @@ Route::get('/register', [UserController::class, 'create']);
 // Create/Store New User
 Route::post('/users', [UserController::class, 'store']);
 
-
+// Log User Out
+Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
 
 // Single Listing (keep at the bottom of the file) - {listing} uses route model binding to get the ID
+// (404 not found: Route Model Binding) error handling
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
