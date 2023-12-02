@@ -14,8 +14,7 @@
       @method('PUT')
       <div class="mb-6">
         <label for="name" class="inline-block text-lg mb-2">Name</label>
-        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" 
-        {{-- prefill field with data --}}
+        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" {{-- prefill field with data --}}
           value="{{ $listing->name }}" />
 
         @error('name')
@@ -72,13 +71,16 @@
         </label>
         <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" />
 
+        {{-- show the current image --}}
+        <img class="w-48 mr-6 mb-6"
+        {{-- if there is a profile image load it from storage + path from database, else display a default image --}}
+          src="{{ $listing->image ? asset('storage/' . $listing->image) : asset('/images/no-image.png') }}"
+          alt="profile picture" />
+
         @error('image')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
       </div>
-
-      {{-- show the current image --}}
-      <img class="w-48 mr-6 mb-6" src="{{ asset('images/no-image.png') }}" alt="profile image" />
 
       <div class="mb-6">
         <label for="description" class="inline-block text-lg mb-2">
