@@ -3,7 +3,8 @@
     "type": "module",
     "scripts": {
         "dev": "vite",
-        "build": "vite build"
+        "build": "vite build",
+        "tinker": "php artisan tinker"
     },
     "devDependencies": {
         "@shufo/prettier-plugin-blade": "^1.13.3",

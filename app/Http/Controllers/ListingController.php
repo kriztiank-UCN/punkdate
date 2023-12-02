@@ -56,7 +56,8 @@ class ListingController extends Controller
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
 
-        // $formFields['user_id'] = auth()->id();
+        // add the currently logged in users, user_id to the form fields when submitting the form
+        $formFields['user_id'] = auth()->id();
 
         // use the create method on the model to create a new listing, pass in the form fields
         Listing::create($formFields);
