@@ -35,18 +35,21 @@
       </div>
     </div>
 
-    {{-- TEMP EDIT--}}
-    <x-card class="mt-4 p-2 flex space-x-6">
+
+    {{-- User Authorization example --}}
+    {{-- <x-card class="mt-4 p-2 flex space-x-6">
       <a href="/listings/{{ $listing->id }}/edit">
         <i class="fa-solid fa-pencil"></i> Edit
       </a>
-    {{-- TEMP DELETE--}}
+
       <form method="POST" action="/listings/{{ $listing->id }}">
         @csrf
         @method('DELETE')
         <button type="submit" class="text-red-500">
           <i class="fa-solid fa-trash"></i> Delete
         </button>
-    </x-card>
+    </x-card> --}}
+
+
   </div>
 </x-layout>
