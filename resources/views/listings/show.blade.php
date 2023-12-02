@@ -4,7 +4,10 @@
   <div class="mx-4">
     <div class="bg-gray-50 border border-gray-200 p-10 rounded">
       <div class="flex flex-col items-center justify-center text-center">
-        <img class="w-48 mr-6 mb-6" src="{{ asset('images/no-image.png') }}" alt="profile image" />
+        {{-- PROFILE IMAGE --}}
+        <img class="w-48 mr-6 mb-6" 
+          {{-- if there is a profile image load it from storage + path from database, else display a default image --}}
+          src="{{ $listing->image ? asset('storage/' . $listing->image) : asset('/images/no-image.png') }}" alt="profile image" />
         <!-- NAME -->
         <h3 class="text-2xl mb-2">{{ $listing->name }}</h3>
         <!-- AGE -->
@@ -35,7 +38,6 @@
       </div>
     </div>
 
-
     {{-- User Authorization example --}}
     {{-- <x-card class="mt-4 p-2 flex space-x-6">
       <a href="/listings/{{ $listing->id }}/edit">
@@ -49,7 +51,6 @@
           <i class="fa-solid fa-trash"></i> Delete
         </button>
     </x-card> --}}
-
 
   </div>
 </x-layout>

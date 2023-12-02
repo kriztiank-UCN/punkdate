@@ -2,7 +2,10 @@
 
 <div class="bg-gray-50 border border-gray-200 rounded p-6">
   <div class="flex">
-    <img class="hidden w-48 mr-6 md:block" src="{{ asset('images/no-image.png') }}" alt="" />
+    {{-- PROFILE IMAGE --}}
+    <img class="hidden w-48 mr-6 md:block" 
+    {{-- if there is a profile image load it from storage + path from database, else display a default image --}}
+    src="{{$listing->image ? asset('storage/' . $listing->image) : asset('/images/no-image.png')}}" alt="profile image" />
     <div>
       <h3 class="text-2xl">
         {{-- NAME --}}
