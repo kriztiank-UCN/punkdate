@@ -55,7 +55,7 @@ Route::post('/listings', [ListingController::class, 'store'])->middleware('auth'
 // Show Edit Form
 Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
-// Edit Update Listing
+// Edit Update Listing Data
 Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
 
 // Delete Listing

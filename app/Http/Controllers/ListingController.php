@@ -71,15 +71,19 @@ class ListingController extends Controller
         return view('listings.edit', ['listing' => $listing]);
     }
 
-    // Edit Update Listing
+    // Edit Update Listing Data
     public function update(Request $request, Listing $listing)
     {
+        // Make sure logged in user is owner
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
+
         $formFields = $request->validate([
             'name' => 'required',
             'age' => 'required',
             'location' => 'required',
-            //FIXME
-            'email' =>  ['required', 'email', Rule::unique('listings', 'email')], // must be formatted as an email
+            'email' =>  ['required', 'email'], // must be formatted as an email
             'tags' => 'required',
             'description' => 'required'
         ]);
@@ -87,8 +91,6 @@ class ListingController extends Controller
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
-
-        // $formFields['user_id'] = auth()->id();
 
         // get the current listing, pass in the form fields
         $listing->update($formFields);
@@ -100,13 +102,15 @@ class ListingController extends Controller
     public function destroy(Listing $listing)
     {
         // Make sure logged in user is owner
-        // if($listing->user_id != auth()->id()) {
-        //     abort(403, 'Unauthorized Action');
-        // }
+        if ($listing->user_id != auth()->id()) {
+            abort(403, 'Unauthorized Action');
+        }
 
+        //FIXME delete the image from the public disk
         // if($listing->logo && Storage::disk('public')->exists($listing->logo)) {
         //     Storage::disk('public')->delete($listing->logo);
         // }
+
         $listing->delete();
         return redirect('/')->with('message', 'Listing deleted successfully');
     }
