@@ -33,4 +33,11 @@ class Listing extends Model
                 ->orWhere('description', 'like', '%' . request('search') . '%');
         }
     }
+
+    // Relationship to user, a listing belongs to a user, 
+    // a user can have many listings, define on the User model
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

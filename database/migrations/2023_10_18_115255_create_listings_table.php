@@ -12,8 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('listings', function (Blueprint $table) {
+            // primary key
             $table->id();
-            // $table->foreignId('user_id')->constrained()->onDelete('cascade');
+            // foreign key
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
             $table->string('age');
             $table->string('location');
@@ -21,7 +23,6 @@ return new class extends Migration
             $table->string('tags');
             $table->longText('description');
             // store path to the file in the database
-            // $table->string('image');
             $table->string('image')->nullable();
             $table->timestamps();
         });

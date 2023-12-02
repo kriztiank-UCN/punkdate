@@ -1,11 +1,10 @@
 <?php
 
-
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\UserController;
 
-// here we load all are views or controllers
+// here we load all our views or controllers
 // listings, posts, profiles, etc could be the name of the resource
 
 // create a new route, a new controller method and a new view for each resource
@@ -22,6 +21,7 @@ use App\Http\Controllers\UserController;
 // Authentication Routes:
 // create - Show form to register new user
 // store - Store new user in database
+// etc....
 
 // create, edit & delete are protected routes for guest users, only authenticated users can see those pages.
 // we can use the middleware() methods to protect those routes
