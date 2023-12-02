@@ -43,14 +43,14 @@ class ListingController extends Controller
             'name' => ['required', Rule::unique('listings', 'name')],
             'age' => 'required',
             'location' => 'required',
-            'email' =>  ['required', 'email', Rule::unique('listings', 'email')], // must be formatted as an email
+            'email' =>  ['required', 'email', Rule::unique('listings', 'email')], //FIXME must be formatted as an email
             'tags' => 'required',
             'description' => 'required'
         ]);
         // if any of the form fields fail, laravel sends back an error message to the create view
 
         // change 'default' => env('FILESYSTEM_DISK', 'local'), to default' => env('FILESYSTEM_DISK', 'public'), in config/filesystems.php
-        // HOW TO VALIDATE???
+        //FIXME HOW TO VALIDATE???
         if ($request->hasFile('image')) {
             $formFields['image'] = $request->file('image')->store('images', 'public');
         }
