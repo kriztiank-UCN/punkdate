@@ -1,8 +1,6 @@
 <?php
 
-// data is coming from the Model
-// use App\Models\Listing;
-use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\UserController;
@@ -25,12 +23,22 @@ use App\Http\Controllers\UserController;
 // create - Show form to register new user
 // store - Store new user in database
 
+// create, edit & delete are protected routes for guest users, only authenticated users can see those pages.
+// we can use the middleware() methods to protect those routes
+// ->middleware('auth');
+// ->middleware('guest');
+// Authenticate.php middleware file has a redirectTo() method that redirects guest users to the login page, but we need to name the login route first.
+// ->name('login');
+
+// register & login are protected routes for authenticated users, only guest users can see those pages.
+// RouteServiceProvider.php file has a HOME constant that redirects authenticated users to the home page, public const HOME = '/home';.
+// Change this to public const HOME = '/';. The path to your application's "home" route.
+
 // WORKFLOW
 // create route
 // create controller file
 // create controller methods/functions
 // create view file
-
 
 // All Listings
 // Goes to ListingController.php and the index method loads the view
@@ -38,23 +46,23 @@ use App\Http\Controllers\UserController;
 Route::get('/', [ListingController::class, 'index']);
 
 // Show Create Form
-Route::get('/listings/create', [ListingController::class, 'create']);
+Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
 // Store Create Data
 // submit form data to this route & call the store method
-Route::post('/listings', [ListingController::class, 'store']);
+Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 
 // Show Edit Form
-Route::get('/listings/{listing}/edit', [ListingController::class, 'edit']);
+Route::get('/listings/{listing}/edit', [ListingController::class, 'edit'])->middleware('auth');
 
 // Edit Update Listing
-Route::put('/listings/{listing}', [ListingController::class, 'update']);
+Route::put('/listings/{listing}', [ListingController::class, 'update'])->middleware('auth');
 
 // Delete Listing
-Route::delete('/listings/{listing}', [ListingController::class, 'destroy']);
+Route::delete('/listings/{listing}', [ListingController::class, 'destroy'])->middleware('auth');
 
 // Show Register/Create Form
-Route::get('/register', [UserController::class, 'create']);
+Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // Create/Store New User
 Route::post('/users', [UserController::class, 'store']);
@@ -62,6 +70,11 @@ Route::post('/users', [UserController::class, 'store']);
 // Log User Out
 Route::post('/logout', [UserController::class, 'logout'])->middleware('auth');
 
+// Show Login Form
+Route::get('/login', [UserController::class, 'login'])->name('login')->middleware('guest');
+
+// Login/Authenticate User
+Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
 // Single Listing (keep at the bottom of the file) - {listing} uses route model binding to get the ID
 // (404 not found: Route Model Binding) error handling
