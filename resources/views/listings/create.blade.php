@@ -12,10 +12,10 @@
       @csrf
       <div class="mb-6">
         <label for="name" class="inline-block text-lg mb-2">Name</label>
-        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name"
+        <input type="text" class="border border-gray-200 rounded p-2 w-full" name="name" 
         {{-- keep data in field after error --}}
           value="{{ old('name') }}" />
-
+        {{-- if any of the form fields fail, laravel sends back an error message to the create view --}}
         @error('name')
           <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
@@ -71,7 +71,7 @@
         <input type="file" class="border border-gray-200 rounded p-2 w-full" name="image" />
 
         @error('image')
-        <p class="text-red-500 text-xs mt-1">{{$message}}</p>
+          <p class="text-red-500 text-xs mt-1">{{ $message }}</p>
         @enderror
       </div>
 
