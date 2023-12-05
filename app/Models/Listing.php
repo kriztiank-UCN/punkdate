@@ -10,7 +10,7 @@ class Listing extends Model
     use HasFactory;
 
     //  protected $fillable = ['name', 'age', 'tags', 'location', 'email', 'description'];
-    // or allaw mass assignment in the AppServiceProvider.php
+    // or allow mass assignment in the AppServiceProvider.php
 
     public function scopeFilter($query, array $filters)
     {
