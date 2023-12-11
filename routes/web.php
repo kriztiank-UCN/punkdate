@@ -82,3 +82,6 @@ Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 // Single Listing (keep at the bottom of the file) - {listing} uses route model binding to get the ID
 // (404 not found: Route Model Binding) error handling
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
+
+// Home test
+// Route::get('/', HomeController::class);
