@@ -14,7 +14,7 @@ class UserController extends Controller
         return view('users.register');
     }
 
-    // Create/Store New User
+    // Create New User
     public function store(Request $request)
     {
         $formFields = $request->validate([
@@ -27,6 +27,7 @@ class UserController extends Controller
         $formFields['password'] = bcrypt($formFields['password']);
 
         // Create User
+        // use the create method on the model to create a new User, pass in the form fields
         $user = User::create($formFields);
 
         // Login
