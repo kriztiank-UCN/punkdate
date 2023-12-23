@@ -33,7 +33,7 @@ class ListingController extends Controller
         return view('listings.create');
     }
 
-    // Store Create Data
+    // Store Listing Data
     public function store(Request $request)
     {
         // dd($request->all());

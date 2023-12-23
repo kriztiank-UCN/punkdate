@@ -48,7 +48,7 @@ Route::get('/', [ListingController::class, 'index']);
 // Show Create Form
 Route::get('/listings/create', [ListingController::class, 'create'])->middleware('auth');
 
-// Store Create Data
+// Store Listing Data
 // submit form data to this route & call the store method
 Route::post('/listings', [ListingController::class, 'store'])->middleware('auth');
 

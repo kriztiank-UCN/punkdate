@@ -6,9 +6,9 @@
     <div class="bg-gray-50 border border-gray-200 p-10 rounded">
       <div class="flex flex-col items-center justify-center text-center">
         {{-- PROFILE IMAGE --}}
-        <img class="w-48 mr-6 mb-6" 
-          {{-- if there is a profile image load it from storage + path from database, else display a default image --}}
-          src="{{ $listing->image ? asset('storage/' . $listing->image) : asset('/images/no-image.png') }}" alt="profile image" />
+        <img class="w-48 mr-6 mb-6" {{-- if there is a profile image load it from storage + path from database, else display a default image --}}
+          src="{{ $listing->image ? asset('storage/' . $listing->image) : asset('/images/no-image.png') }}"
+          alt="profile image" />
         <!-- NAME -->
         <h3 class="text-2xl mb-2">{{ $listing->name }}</h3>
         <!-- AGE -->
@@ -51,6 +51,7 @@
         <button type="submit" class="text-red-500">
           <i class="fa-solid fa-trash"></i> Delete
         </button>
+      </form>
     </x-card> --}}
 
   </div>
