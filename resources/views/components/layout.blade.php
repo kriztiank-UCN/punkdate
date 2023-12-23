@@ -34,6 +34,7 @@
       @auth
         <li>
           <span class="font-bold uppercase">
+            {{-- show the logged in users name in the navigation --}}
             Welcome {{ auth()->user()->name }}
           </span>
         </li>
