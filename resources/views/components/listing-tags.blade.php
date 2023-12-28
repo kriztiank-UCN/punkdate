@@ -1,4 +1,4 @@
-{{-- passes a prop to show.blade.php --}}
+{{-- pass a prop, use in listing-card.blade.php, show.blade.php --}}
 @props(['tagsCsv'])
 
 @php
@@ -12,5 +12,4 @@
       <a href="/?tag={{ $tag }}">{{ $tag }}</a>
     </li>
   @endforeach
-
 </ul>
