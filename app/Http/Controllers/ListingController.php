@@ -62,7 +62,7 @@ class ListingController extends Controller
         // use the create method on the model to create a new listing, pass in the form fields
         Listing::create($formFields);
 
-        return redirect('/')->with('message', 'Listing created successfully!');
+        return redirect('/')->with('message', 'Profile created successfully!');
     }
 
     // Show Edit Form
@@ -96,7 +96,7 @@ class ListingController extends Controller
         // get the current listing, pass in the form fields
         $listing->update($formFields);
 
-        return back()->with('message', 'Listing updated successfully!');
+        return back()->with('message', 'Profile updated successfully!');
     }
 
     // Delete Listing
@@ -113,7 +113,7 @@ class ListingController extends Controller
         // }
 
         $listing->delete();
-        return redirect('/')->with('message', 'Listing deleted successfully');
+        return redirect('/')->with('message', 'Profile deleted successfully');
     }
 
     // Manage Listings
