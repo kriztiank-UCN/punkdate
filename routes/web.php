@@ -23,7 +23,7 @@ use App\Http\Controllers\UserController;
 // store - Store new user in database
 // etc....
 
-// create, edit & delete are protected routes for guest users, only authenticated users can see those pages.
+// create, edit, delete & manage are protected routes for guest users, only authenticated users can see those pages.
 // we can use the middleware() methods to protect those routes
 // ->middleware('auth');
 // ->middleware('guest');
