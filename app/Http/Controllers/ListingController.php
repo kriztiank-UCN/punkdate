@@ -82,7 +82,7 @@ class ListingController extends Controller
 
         $formFields = $request->validate([
             'name' => 'required',
-            'age' => 'required',
+            'age' => ['required', 'min:18', 'max:100', 'numeric'],
             'location' => 'required',
             'email' =>  ['required', 'email'], // must be formatted as an email
             'tags' => 'required',
