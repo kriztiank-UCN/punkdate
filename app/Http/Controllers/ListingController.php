@@ -42,7 +42,7 @@ class ListingController extends Controller
         $formFields = $request->validate([
             // pass in the name of the table & the field that needs to be unique
             'name' => ['required', Rule::unique('listings', 'name')],
-            'age' => 'required',
+            'age' => ['required', 'min:18', 'max:100', 'numeric'],
             'location' => 'required',
             'email' =>  ['required', 'email', Rule::unique('listings', 'email')], //FIXME must be formatted as an email
             'tags' => 'required',

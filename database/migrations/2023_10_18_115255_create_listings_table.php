@@ -17,7 +17,7 @@ return new class extends Migration
             // foreign key
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string('name');
-            $table->string('age');
+            $table->integer('age');
             $table->string('location');
             $table->string('email');
             $table->string('tags');
