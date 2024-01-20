@@ -1,3 +1,5 @@
+
+{{-- recieve a prop, index.blade.php --}}
 @props(['listing'])
 {{-- CARD --}}
 <div class="bg-gray-50 border border-gray-200 rounded p-6">
@@ -14,7 +16,7 @@
       {{-- AGE --}}
       <div class="text-xl font-bold mb-4">{{ $listing->age }}</div>
       {{-- TAGS --}}
-      {{-- bind a variable to the tagsCsv prop from listing-tags --}}
+      {{-- bind a variable to the tagsCsv prop and pass to the listing-tags component --}}
       <x-listing-tags :tagsCsv="$listing->tags" />
       {{-- LOCATION --}}
       <div class="text-lg mt-4"><i class="fa-solid fa-location-dot"></i> {{ $listing->location }}</div>

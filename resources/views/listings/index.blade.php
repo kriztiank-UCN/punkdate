@@ -5,9 +5,10 @@
   <div class="lg:grid lg:grid-cols-2 gap-4 space-y-4 md:space-y-0 mx-4">
 
     @if (count($listings) < 1)
-      <p>There are no listings</p>
+      <p>There are no profiles</p>
     @endif
 
+   {{-- loop through the listings and pass the listing to the listing-card component with a prop --}}
     @foreach ($listings as $listing)
       <x-listing-card :listing="$listing" />
     @endforeach

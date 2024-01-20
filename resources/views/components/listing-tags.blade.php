@@ -1,4 +1,4 @@
-{{-- pass a prop, use in listing-card.blade.php, show.blade.php --}}
+{{-- recieve a prop from listing-card.blade.php, show.blade.php --}}
 @props(['tagsCsv'])
 
 @php
