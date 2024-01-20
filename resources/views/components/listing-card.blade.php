@@ -1,5 +1,4 @@
-
-{{-- recieve a prop, index.blade.php --}}
+{{-- receive a prop from index.blade.php --}}
 @props(['listing'])
 {{-- CARD --}}
 <div class="bg-gray-50 border border-gray-200 rounded p-6">

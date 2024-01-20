@@ -8,8 +8,9 @@
       <p>There are no profiles</p>
     @endif
 
-   {{-- loop through the listings and pass the listing to the listing-card component with a prop --}}
+   {{-- loop through the listings --}}
     @foreach ($listings as $listing)
+    {{-- bind the $listing variable to the :listing prop and pass it to the listing-card component --}}
       <x-listing-card :listing="$listing" />
     @endforeach
 
