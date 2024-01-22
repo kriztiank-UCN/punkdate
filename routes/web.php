@@ -40,7 +40,7 @@ use App\Http\Controllers\UserController;
 // create controller methods/functions
 // create view file
 
-// All Listings
+// Show All Listings
 // Goes to ListingController.php and the index method loads the view
 // Route to the method that loads the view
 Route::get('/', [ListingController::class, 'index']);
@@ -79,6 +79,6 @@ Route::get('/login', [UserController::class, 'login'])->name('login')->middlewar
 // Login/Authenticate User
 Route::post('/users/authenticate', [UserController::class, 'authenticate']);
 
-// Single Listing (keep at the bottom of the file) - {listing} uses route model binding to get the ID
+// Show Single Listing (keep at the bottom of the file) - {listing} uses route model binding to get the ID
 // (404 not found: Route Model Binding) error handling
 Route::get('/listings/{listing}', [ListingController::class, 'show']);
