@@ -68,6 +68,7 @@ Route::get('/listings/manage', [ListingController::class, 'manage'])->middleware
 Route::get('/register', [UserController::class, 'create'])->middleware('guest');
 
 // Create/Store New User
+// submit form data to this route & call the store method
 Route::post('/users', [UserController::class, 'store']);
 
 // Log User Out
