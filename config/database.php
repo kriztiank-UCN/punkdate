@@ -37,7 +37,6 @@ return [
     'connections' => [
         'singlestore' => [
             'driver' => 'singlestore',
-            'ignore_order_by_in_select' => true,
             'ignore_order_by_in_deletes' => true,
             'ignore_order_by_in_updates' => true,
             'url' => env('DATABASE_URL'),
@@ -54,7 +53,7 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+                PDO::MYSQL_ATTR_SSL_CA => '../singlestore_bundle.pem',
                 PDO::ATTR_EMULATE_PREPARES => true,
                 PDO::ATTR_PERSISTENT => true
             ]) : [],
