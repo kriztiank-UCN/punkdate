@@ -37,6 +37,9 @@ return [
     'connections' => [
         'singlestore' => [
             'driver' => 'singlestore',
+            'ignore_order_by_in_select' => true,
+            'ignore_order_by_in_deletes' => true,
+            'ignore_order_by_in_updates' => true,
             'url' => env('DATABASE_URL'),
             'host' => env('DB_HOST'),
             'port' => env('DB_PORT'),
